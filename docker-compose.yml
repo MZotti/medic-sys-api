@@ -1,74 +1,71 @@
-# For more information: https://laravel.com/docs/sail
 version: '3'
+
 services:
-    laravel.test:
-        build:
-            context: ./vendor/laravel/sail/runtimes/8.0
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: sail-8.0/app
-        ports:
-            - '${APP_PORT:-80}:80'
-        environment:
-            WWWUSER: '${WWWUSER}'
-            LARAVEL_SAIL: 1
-        volumes:
-            - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            - mysql
-            - redis
-            # - selenium
-    # selenium:
-    #     image: 'selenium/standalone-chrome'
-    #     volumes:
-    #         - '/dev/shm:/dev/shm'
-    #     networks:
-    #         - sail
-    #     depends_on:
-    #         - laravel.test
-    mysql:
-        image: 'mysql:8.0'
-        ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
-        environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-        volumes:
-            - 'sailmysql:/var/lib/mysql'
-        networks:
-            - sail
-    redis:
-        image: 'redis:alpine'
-        ports:
-            - '${FORWARD_REDIS_PORT:-6379}:6379'
-        volumes:
-            - 'sailredis:/data'
-        networks:
-            - sail
-    # memcached:
-    #     image: 'memcached:alpine'
-    #     ports:
-    #         - '11211:11211'
-    #     networks:
-    #         - sail
-    mailhog:
-        image: 'mailhog/mailhog:latest'
-        ports:
-            - 1025:1025
-            - 8025:8025
-        networks:
-            - sail
+  medic-sys-app:
+    build:
+      context: .docker/php/
+      dockerfile: Dockerfile
+    container_name: medic-sys-app
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 9000
+    restart: on-failure
+    links:
+      - medic-sys-db
+    depends_on:
+      - medic-sys-db
+    networks:
+      - medic-sys
+
+  medic-sys-web:
+    image: nginx:1.17-alpine
+    container_name: medic-sys-web
+    ports:
+      - "8115:80"
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/dev/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    restart: on-failure
+    links:
+      - medic-sys-app
+    depends_on:
+      - medic-sys-app
+    networks:
+      - medic-sys
+
+  medic-sys-db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: medic-sys-db
+    restart: on-failure
+    volumes:
+      - medic-sys-db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwe123
+      - MYSQL_DATABASE=medicsysapp
+    ports:
+      - 33115:3306
+    networks:
+      - medic-sys
+
+  medic-sys-supervisor:
+    build:
+      context: .docker/supervisor/
+      dockerfile: Dockerfile
+    container_name: medic-sys-supervisor
+    volumes:
+      - ./:/var/www/html
+    restart: on-failure
+    links:
+      - medic-sys-db
+    depends_on:
+      - medic-sys-db
+    networks:
+      - medic-sys
+
 networks:
-    sail:
-        driver: bridge
+  medic-sys:
+
 volumes:
-    sailmysql:
-        driver: local
-    sailredis:
-        driver: local
+  medic-sys-db:

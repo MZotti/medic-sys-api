@@ -1,0 +1,40 @@
+2020-12-12 21:08:28,048 INFO Included extra file "/etc/supervisor/conf.d/crond.conf" during parsing
+2020-12-12 21:08:28,049 INFO Set uid to user 0 succeeded
+2020-12-12 21:08:28,062 INFO supervisord started with pid 1
+2020-12-12 21:08:29,065 INFO spawned: 'crond_00' with pid 7
+2020-12-12 21:08:30,067 INFO success: crond_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-12-12 21:09:19,101 WARN received SIGQUIT indicating exit request
+2020-12-12 21:09:19,102 INFO waiting for crond_00 to die
+2020-12-12 21:09:19,103 INFO stopped: crond_00 (terminated by SIGTERM)
+2020-12-12 21:09:30,929 INFO Included extra file "/etc/supervisor/conf.d/crond.conf" during parsing
+2020-12-12 21:09:30,934 INFO Set uid to user 0 succeeded
+2020-12-12 21:09:30,941 INFO supervisord started with pid 1
+2020-12-12 21:09:31,945 INFO spawned: 'crond_00' with pid 7
+2020-12-12 21:09:32,947 INFO success: crond_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-12-12 21:09:56,970 WARN received SIGQUIT indicating exit request
+2020-12-12 21:09:56,971 INFO waiting for crond_00 to die
+2020-12-12 21:09:56,972 INFO stopped: crond_00 (terminated by SIGTERM)
+2020-12-12 21:10:04,890 INFO Included extra file "/etc/supervisor/conf.d/crond.conf" during parsing
+2020-12-12 21:10:04,891 INFO Set uid to user 0 succeeded
+2020-12-12 21:10:04,896 INFO supervisord started with pid 1
+2020-12-12 21:10:05,900 INFO spawned: 'crond_00' with pid 7
+2020-12-12 21:10:06,903 INFO success: crond_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-12-12 21:10:48,951 WARN received SIGQUIT indicating exit request
+2020-12-12 21:10:48,952 INFO waiting for crond_00 to die
+2020-12-12 21:10:48,953 INFO stopped: crond_00 (terminated by SIGTERM)
+2020-12-12 21:12:35,577 INFO Included extra file "/etc/supervisor/conf.d/crond.conf" during parsing
+2020-12-12 21:12:35,577 INFO Set uid to user 0 succeeded
+2020-12-12 21:12:35,589 INFO supervisord started with pid 1
+2020-12-12 21:12:36,592 INFO spawned: 'crond_00' with pid 7
+2020-12-12 21:12:37,600 INFO success: crond_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-12-12 21:15:50,667 WARN received SIGQUIT indicating exit request
+2020-12-12 21:15:50,668 INFO waiting for crond_00 to die
+2020-12-12 21:15:50,669 INFO stopped: crond_00 (terminated by SIGTERM)
+2020-12-12 21:16:03,150 INFO Included extra file "/etc/supervisor/conf.d/crond.conf" during parsing
+2020-12-12 21:16:03,151 INFO Set uid to user 0 succeeded
+2020-12-12 21:16:03,156 INFO supervisord started with pid 1
+2020-12-12 21:16:04,158 INFO spawned: 'crond_00' with pid 7
+2020-12-12 21:16:05,161 INFO success: crond_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-12-12 21:19:42,214 WARN received SIGQUIT indicating exit request
+2020-12-12 21:19:42,215 INFO waiting for crond_00 to die
+2020-12-12 21:19:42,216 INFO stopped: crond_00 (terminated by SIGTERM)
